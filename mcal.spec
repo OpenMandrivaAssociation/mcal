@@ -16,7 +16,6 @@ Patch2:		mcal-mstore_calendar_path.patch
 Patch3:		libmcal-0.7-gcc-4.0-fix.patch
 Patch4:		libmcal-0.7-flexfix.diff
 BuildRequires:	flex libtool pam-devel
-Buildroot:      %{_tmppath}/%{name}-%{version}-%{release}-root
 
 %description
 libmcal is a C library for accessing calendars. It's written to be
