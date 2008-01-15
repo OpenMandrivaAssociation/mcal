@@ -5,7 +5,7 @@
 Summary:	Modular Calendar Access Library
 Name:		mcal
 Version:	0.7
-Release:	%mkrel 8
+Release:	%mkrel 10
 Group:		System/Libraries
 License:	GPL
 URL:		http://mcal.chek.com/
