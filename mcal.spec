@@ -7,6 +7,7 @@ Name:		mcal
 Version:	0.7
 Release:	%mkrel 10
 Group:		System/Libraries
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 License:	GPL
 URL:		http://mcal.chek.com/
 Source0:	lib%{name}-%{version}.tar.bz2
