@@ -70,7 +70,7 @@ install -d %{buildroot}
 mv -f mstore/Changelog Changelog.mstore
 mv -f mstore/README README.mstore
 
-install -d -m 1777 %{buildroot}%{_localstatedir}/calendar
+install -d -m 1777 %{buildroot}%{_localstatedir}/lib/calendar
 mkdir -p %{buildroot}%{_sysconfdir}
 touch %{buildroot}%{_sysconfdir}/mpasswd
 
@@ -86,7 +86,7 @@ rm -rf %{buildroot}
 %doc CHANGELOG FAQ-MCAL FEATURE-IMPLEMENTATION HOW-TO-MCAL *.mstore
 %config(noreplace) %{_sysconfdir}/mpasswd
 %attr(755,root,root) %{_libdir}/lib*.so.*
-%attr(1777,root,root) %{_localstatedir}/calendar
+%attr(1777,root,root) %{_localstatedir}/lib/calendar
 
 %files -n %{lib_name}-devel
 %defattr(644,root,root,755)
