@@ -74,9 +74,13 @@ install -d -m 1777 %{buildroot}%{_localstatedir}/lib/calendar
 mkdir -p %{buildroot}%{_sysconfdir}
 touch %{buildroot}%{_sysconfdir}/mpasswd
 
+%if %mdkversion < 200900
 %post	-n %{lib_name} -p /sbin/ldconfig
+%endif
 
+%if %mdkversion < 200900
 %postun	-n %{lib_name} -p /sbin/ldconfig
+%endif
 
 %clean
 rm -rf %{buildroot}
