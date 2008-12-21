@@ -1,3 +1,5 @@
+%define _disable_ld_no_undefined 1
+
 %define major 0
 %define libname %mklibname %{name} %{major}
 %define develname %mklibname %{name} -d
@@ -5,7 +7,7 @@
 Summary:	Modular Calendar Access Library
 Name:		mcal
 Version:	0.7
-Release:	%mkrel 12
+Release:	%mkrel 13
 Group:		System/Libraries
 License:	GPLv2+
 URL:		http://mcal.chek.com/
@@ -67,7 +69,7 @@ export OPTFLAGS="%{optflags} -fPIC -D_REENTRANT"
     --with-icap \
     --with-mstore
 
-%make LDFLAGS=""
+%make
 
 %install
 rm -rf %{buildroot}
