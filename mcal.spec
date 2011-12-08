@@ -7,7 +7,7 @@
 Summary:	Modular Calendar Access Library
 Name:		mcal
 Version:	0.7
-Release:	%mkrel 17
+Release:	18
 Group:		System/Libraries
 License:	GPLv2+
 URL:		http://mcal.chek.com/
@@ -18,9 +18,8 @@ Patch2:		mcal-mstore_calendar_path.patch
 Patch3:		libmcal-0.7-gcc-4.0-fix.patch
 Patch4:		libmcal-0.7-flexfix.diff
 BuildRequires:	flex
-BuildRequires:	libtool
+BuildRequires:	autoconf automake libtool
 BuildRequires:	pam-devel
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 libmcal is a C library for accessing calendars. It's written to be very
@@ -38,7 +37,7 @@ linked with mcal.
 %package -n	%{develname}
 Summary:	MCAL header files
 Group:		Development/C
-Requires:	%{libname} = %{version}
+Requires:	%{libname} >= %{version}
 Provides:	lib%{name}-devel = %{version}-%{release} 
 Provides:	%{name}-devel = %{version}-%{release}   
 Obsoletes:	%{mklibname mcal -d 0}
@@ -83,27 +82,15 @@ install -d -m 1777 %{buildroot}/var/lib/calendar
 mkdir -p %{buildroot}%{_sysconfdir}
 touch %{buildroot}%{_sysconfdir}/mpasswd
 
-%if %mdkversion < 200900
-%post	-n %{libname} -p /sbin/ldconfig
-%endif
-
-%if %mdkversion < 200900
-%postun	-n %{libname} -p /sbin/ldconfig
-%endif
-
-%clean
-rm -rf %{buildroot}
+# cleanup
+rm -f %{buildroot}%{_libdir}/*.*a
 
 %files -n %{libname}
-%defattr(0644,root,root,0755)
 %doc CHANGELOG FAQ-MCAL FEATURE-IMPLEMENTATION HOW-TO-MCAL *.mstore
 %config(noreplace) %{_sysconfdir}/mpasswd
 %attr(0755,root,root) %{_libdir}/lib*.so.*
 %attr(1777,root,root) /var/lib/calendar
 
 %files -n %{develname}
-%defattr(0644,root,root,0755)
 %attr(755,root,root) %{_libdir}/lib*.so
 %{_includedir}/*
-%{_libdir}/lib*.a
-%{_libdir}/lib*.la
