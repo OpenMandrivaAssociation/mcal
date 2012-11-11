@@ -1,0 +1,11 @@
+--- icalscanner.lex	2003-01-28 12:45:21.000000000 -0500
++++ icalscanner.lex.oden	2006-10-31 12:05:17.000000000 -0500
+@@ -36,7 +36,7 @@
+ void
+ ical_usebuf(const char *buf, size_t size)
+ {
+-	BEGIN(INITIAL);
++	BEGIN(0);
+ 	yy_scan_bytes(buf, size);
+ }
+ %}

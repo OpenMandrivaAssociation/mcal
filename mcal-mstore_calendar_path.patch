@@ -1,0 +1,11 @@
+--- mstore/mstore.c	2003-01-28 18:31:33.000000000 +0100
++++ mstore/mstore.c.lib	2004-02-15 16:49:59.000000000 +0100
+@@ -336,7 +336,7 @@
+ 	if(addr->host)
+ 	  DATA->base_path=strdup(addr->host);
+ 	else
+-	  DATA->base_path=strdup("/var/calendar");
++	  DATA->base_path=strdup("/var/lib/calendar");
+ 
+ 		DATA->login_user=DATA->login_userbuf;
+ 		if (addr->user) {
