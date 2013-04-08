@@ -19,6 +19,7 @@ Patch3:		libmcal-0.7-gcc-4.0-fix.patch
 Patch4:		libmcal-0.7-flexfix.diff
 BuildRequires:	flex
 BuildRequires:	pam-devel
+BuildRequires:	libtool
 
 %description
 libmcal is a C library for accessing calendars. It's written to be very
