@@ -27,7 +27,7 @@ diff -Nur libmcal.orig/Makefile.in libmcal/Makefile.in
  	mkdir -p ${DESTDIR}@prefix@/include/mcal/
 -	install -m 755 -o 0 -g 0 libmcal.a libmcal.so ${DESTDIR}@prefix@/lib
 -	install -m 644 -o 0 -g 0 \
-+	libtool --mode=install install libmcal.la ${DESTDIR}@prefix@/lib
++	libtool --tag=CC --mode=install install libmcal.la ${DESTDIR}@prefix@/lib
 +	install -m 644 \
  	  mcal.h bool.h datetime.h drivers.h cal_misc.h icalroutines.h \
  	  ${DESTDIR}@prefix@/include/mcal/
@@ -40,7 +40,7 @@ diff -Nur libmcal.orig/Makefile.in libmcal/Makefile.in
 +libmcal.la: $(LIBOBJS)
  	rm -f $(LIBCAL)
 -	ar r $(LIBCAL) $(LIBOBJS)
-+	libtool --mode=link $(CC) $(LDFLAGS) -o libmcal.la $(LIBOBJS) -rpath @prefix@/lib -lpam
++	libtool --tag=CC --mode=link $(CC) $(LDFLAGS) -o libmcal.la $(LIBOBJS) -rpath @prefix@/lib -lpam
  
 -libmcal.so: $(LIBOBJS)
 -	rm -f $(LIBCAL_SO)
@@ -52,7 +52,7 @@ diff -Nur libmcal.orig/Makefile.in libmcal/Makefile.in
 -tester: tester.o libmcal.a
 -	gcc -Wall -g -o tester tester.o $(LIBCAL) -lcrypt
 +tester: tester.o libmcal.la
-+	libtool --mode=link $(CC) $(LDFLAGS) -Wall -o tester tester.o $(LIBCAL) -lcrypt
++	libtool --tag=CC --mode=link $(CC) $(LDFLAGS) -Wall -o tester tester.o $(LIBCAL) -lcrypt
  
  clean:
  	rm -f *.o *~ core $(LIBCAL) $(LIBCAL_SO) tester installed 
@@ -64,7 +64,7 @@ diff -Nur libmcal.orig/Makefile.in libmcal/Makefile.in
 +	makedepend $(INCLUDE) -- $(ALLOBJS:%.lo=%.c) > /dev/null 2>&1
  
 +%.lo: %.c
-+	libtool --mode=compile $(CC) $(CFLAGS) -c $< -o $@
++	libtool --tag=CC --mode=compile $(CC) $(CFLAGS) -c $< -o $@
 diff -Nur libmcal.orig/configure libmcal/configure
 --- libmcal.orig/configure	Tue Jan 28 18:45:21 2003
 +++ libmcal/configure	Sat Apr 12 17:58:01 2003
@@ -96,7 +96,7 @@ diff -Nur libmcal.orig/icap/Makefile libmcal/icap/Makefile
  
  $(TARGET): $(ALLOBJS)
 -	ld -r -o $(TARGET) $(ALLOBJS)
-+	libtool --mode=link $(CC) -o $(TARGET) $(ALLOBJS)
++	libtool --tag=CC --mode=link $(CC) -o $(TARGET) $(ALLOBJS)
  	touch bootstrap.in
  
  lex.icap_yy.c: icapscanner.lex
@@ -108,7 +108,7 @@ diff -Nur libmcal.orig/icap/Makefile libmcal/icap/Makefile
 +	makedepend $(INCLUDE) -- $(ALLOBJS:%.lo=%.c) > /dev/null 2>&1
  
 +%.lo: %.c
-+	libtool --mode=compile $(CC) $(CFLAGS) -c $< -o $@
++	libtool --tag=CC --mode=compile $(CC) $(CFLAGS) -c $< -o $@
 diff -Nur libmcal.orig/mstore/Makefile libmcal/mstore/Makefile
 --- libmcal.orig/mstore/Makefile	Tue Jan 28 18:31:33 2003
 +++ libmcal/mstore/Makefile	Sat Apr 12 17:57:48 2003
@@ -128,7 +128,7 @@ diff -Nur libmcal.orig/mstore/Makefile libmcal/mstore/Makefile
  
  $(TARGET): $(ALLOBJS)
 -	ld -r -o $(TARGET) $(ALLOBJS)
-+	libtool --mode=link $(CC) -o $(TARGET) $(ALLOBJS)
++	libtool --tag=CC --mode=link $(CC) -o $(TARGET) $(ALLOBJS)
  	touch bootstrap.in
  
  clean:
@@ -140,4 +140,4 @@ diff -Nur libmcal.orig/mstore/Makefile libmcal/mstore/Makefile
 +	makedepend $(INCLUDE) -- $(ALLOBJS:%.lo=%.c) > /dev/null 2>&1
 +
 +%.lo: %.c
-+	libtool --mode=compile $(CC) $(CFLAGS) -c $< -o $@
++	libtool --tag=CC --mode=compile $(CC) $(CFLAGS) -c $< -o $@
