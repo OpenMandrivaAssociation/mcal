@@ -7,7 +7,7 @@
 Summary:	Modular Calendar Access Library
 Name:		mcal
 Version:	0.7
-Release:	18
+Release:	19
 Group:		System/Libraries
 License:	GPLv2+
 URL:		http://mcal.chek.com/
@@ -17,6 +17,7 @@ Patch0:		libmcal-make.patch
 Patch2:		mcal-mstore_calendar_path.patch
 Patch3:		libmcal-0.7-gcc-4.0-fix.patch
 Patch4:		libmcal-0.7-flexfix.diff
+Patch5:		libmcal-0.7-flex-2.5.37.patch
 BuildRequires:	flex
 BuildRequires:	pam-devel
 BuildRequires:	libtool
@@ -52,6 +53,7 @@ rm -rf mcal-drivers
 %patch2 -p0 -b .calpath
 %patch3 -p1 -b .gcc4_0
 %patch4 -p0 -b .flex
+%patch5 -p1
 
 # lib64 fix
 perl -pi -e "s|/lib\b|/%{_lib}|g" Makefile*
