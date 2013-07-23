@@ -10,7 +10,7 @@ Version:	0.7
 Release:	19
 Group:		System/Libraries
 License:	GPLv2+
-URL:		http://mcal.chek.com/
+Url:		http://mcal.chek.com/
 Source0:	lib%{name}-%{version}.tar.gz
 Source1:	mcaldrivers-0.9.tar.gz
 Patch0:		libmcal-make.patch
@@ -19,8 +19,8 @@ Patch3:		libmcal-0.7-gcc-4.0-fix.patch
 Patch4:		libmcal-0.7-flexfix.diff
 Patch5:		libmcal-0.7-flex-2.5.37.patch
 BuildRequires:	flex
-BuildRequires:	pam-devel
 BuildRequires:	libtool
+BuildRequires:	pam-devel
 
 %description
 libmcal is a C library for accessing calendars. It's written to be very
@@ -38,7 +38,7 @@ linked with mcal.
 %package -n	%{devname}
 Summary:	MCAL header files
 Group:		Development/C
-Requires:	%{libname} >= %{version}
+Requires:	%{libname} >= %{version}-%{release}
 Provides:	%{name}-devel = %{version}-%{release}   
 
 %description -n	%{devname}
@@ -56,7 +56,7 @@ rm -rf mcal-drivers
 %patch5 -p1
 
 # lib64 fix
-perl -pi -e "s|/lib\b|/%{_lib}|g" Makefile*
+sed -i -e "s|/lib\b|/%{_lib}|g" Makefile*
 
 %build
 export OPTFLAGS="%{optflags} -fPIC -D_REENTRANT"
@@ -83,7 +83,7 @@ touch %{buildroot}%{_sysconfdir}/mpasswd
 
 %files -n %{libname}
 %config(noreplace) %{_sysconfdir}/mpasswd
-%{_libdir}/lib*.so.*
+%{_libdir}/libmcal.so.%{major}*
 /var/lib/calendar
 
 %files -n %{devname}
