@@ -11,7 +11,7 @@ Version:	0.7
 Release:	30
 Group:		System/Libraries
 License:	GPLv2+
-Url:		http://mcal.chek.com/
+Url:		https://mcal.chek.com/
 Source0:	lib%{name}-%{version}.tar.gz
 Source1:	mcaldrivers-0.9.tar.gz
 Patch0:		libmcal-make.patch
