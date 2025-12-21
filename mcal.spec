@@ -19,6 +19,11 @@ Patch2:		mcal-mstore_calendar_path.patch
 Patch3:		libmcal-0.7-gcc-4.0-fix.patch
 Patch4:		libmcal-0.7-flexfix.diff
 Patch5:		libmcal-0.7-flex-2.5.37.patch
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	flex
 BuildRequires:	libtool
 BuildRequires:	pam-devel
